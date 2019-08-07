@@ -35,7 +35,7 @@ port = 465
 smtp_server = "smtp.gmail.com"
 sender_email = "leo7279bot@gmail.com"
 receiver_email = "tyagiabhishek13@gmail.com"
-password = "Kakashiken@123"
+password = input()
 Gionsale = set()
 urls = [ 'https://www.bjjhq.com/','https://bjjfanatics.com/collections/daily-deals','https://www.mmahq.com/' ]
 context = ssl.create_default_context()
@@ -46,8 +46,8 @@ while True:
         if re.search('gi',saleitem,re.IGNORECASE):
             if not saleitem in Gionsale:
                 Gionsale.add(saleitem)
-                message += "Subject: BOT NOTIFICATION Gi On Sale\n\n"
-                message = "The following Gi is on sale: "
+                message = "Subject: BOT NOTIFICATION Gi On Sale\n\n"
+                message += "The following Gi is on sale: "
                 message+= saleitem +"\n"
                 message += "Get in on: "+link
                 with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
