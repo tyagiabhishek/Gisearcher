@@ -46,7 +46,7 @@ while True:
         if re.search('gi',saleitem,re.IGNORECASE):
             if not saleitem in Gionsale:
                 Gionsale.add(saleitem)
-                message = "Subject: BOT NOTIFICATION Gi On Sale\n"
+                message += "Subject: BOT NOTIFICATION Gi On Sale\n\n"
                 message = "The following Gi is on sale: "
                 message+= saleitem +"\n"
                 message += "Get in on: "+link
