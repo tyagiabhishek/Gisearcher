@@ -35,26 +35,30 @@ port = 465
 smtp_server = "smtp.gmail.com"
 sender_email = "leo7279bot@gmail.com"
 receiver_email = "tyagiabhishek13@gmail.com"
-password = input()
+password = "Kakashiken@123"
 Gionsale = set()
 urls = [ 'https://www.bjjhq.com/','https://bjjfanatics.com/collections/daily-deals','https://www.mmahq.com/' ]
 context = ssl.create_default_context()
 #working loop
 while True:
+    time.sleep(5*60)
     for url in urls:
         link,saleitem = get_link_name(url)
-        if re.search('gi',saleitem,re.IGNORECASE):
-            if not saleitem in Gionsale:
-                Gionsale.add(saleitem)
-                message = "Subject: BOT NOTIFICATION Gi On Sale\n"
-                message = "The following Gi is on sale: "
-                message+= saleitem +"\n"
-                message += "Get in on: "+link
-                with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-                    server.login(sender_email, password)
-                    server.sendmail(sender_email, receiver_email, message)
+        #if re.search('gi',saleitem,re.IGNORECASE):
+        if not saleitem in Gionsale:
+            print(saleitem)
+            Gionsale.add(saleitem)
+            message = "Subject: BOT NOTIFICATION Gi On Sale\n\n"
+            message += "The following Gi is on sale: "
+            message+= saleitem +"\n"
+            message += "Get in on: "+link
+            with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+                server.login(sender_email, password)
+                print(message)
+                server.sendmail(sender_email, receiver_email, message)
                 
-                print("New Gi on sale "+saleitem)
+            print("New Gi on sale "+saleitem)
+            exit()
     time.sleep(5*60)
 
 
